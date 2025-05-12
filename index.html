@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゲート構成シミュレーターだヨ😊✨ナンチャッテ</title>
+  <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #fff8e1;
+        padding: 20px;
+        color: #000000;
+        /* おじさんの優しさカラーだヨ💕 */
+        background-image: repeating-linear-gradient(135deg, #fff8e1 0 40px, #ffe0b2 40px 80px);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #d84315;
+        text-shadow: 1px 1px 0 #fff176, 2px 2px 0 #ffb300;
+        /* おじさんの情熱だネ✨ */
+    }
+    .gate-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        opacity: 0;
+        animation: fadeInOjisan 1.2s forwards;
+    }
+    .gate-columns {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 40px;
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid #cccccc;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px #ffb30088;
+    }
+    .gate-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 50px;
+        gap: 2px;
+    }
+    .box {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        border: 2px dashed #d84315;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        animation: boxSlideOjisan 0.7s forwards;
+        font-size: 18px;
+        box-shadow: 2px 2px 4px #ffb30055;
+        margin-bottom: 2px;
+        /* おじさんのヨイショ！アニメーションだヨ😅 */
+    }
+    .A { background: #f4ed58; width: 30px; color: #d84315;}
+    .B { background: #5dc3db; width: 40px; }
+    .C { background: #03984e; width: 50px; }
+    .D { background: #ffffff; width: 20px; color: #000000; }
+    .E { background: #000000; width: 30px; }
+    .D, .E {
+        position: relative;
+    }
+    .D::before, .D::after, .E::before, .E::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 5px;
+    }
+    .D::before {
+        top: 0;
+        background-color: #e893d4;
+    }
+    .D::after {
+        bottom: 0;
+        background-color: #e893d4;
+    }
+    .E::before {
+        top: 0;
+        background-color: #f4ed58;
+    }
+    .E::after {
+        bottom: 0;
+        background-color: #f4ed58;
+    }
+    .roof {
+        height: 40px;
+        background: #222222;
+        color: #fff176;
+        font-weight: bold;
+        text-align: center;
+        line-height: 40px;
+        width: 260px;
+        border-radius: 6px;
+        font-size: 20px;
+        box-shadow: 0 0 8px #e893d4;
+        margin-bottom: 10px;
+        animation: roofDonOjisan 0.8s;
+        /* おじさんのドーン！アニメーションだヨ😁 */
+    }
+    .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    .controls input {
+        width: 80px;
+        font-size: 18px;
+        padding: 5px;
+        text-align: center;
+        border: 2px solid #d84315;
+        border-radius: 6px;
+        background: #fffde7;
+        color: #d84315;
+    }
+    .controls label {
+        font-size: 18px;
+        color: #03984e;
+        font-weight: bold;
+        margin-right: 4px;
+        text-shadow: 1px 1px 0 #fff176;
+    }
+    button {
+        padding: 12px 24px;
+        background-color: #45a049;
+        color: #fff176;
+        border: 2px solid #d84315;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 300px;
+        margin: 10px auto;
+        text-align: center;
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: 0 0 8px #e893d4;
+        letter-spacing: 2px;
+    }
+    button:hover {
+      background-color: #28862c;
+      color: #ffb300;
+      border-color: #03984e;
+    }
+    @keyframes fadeInOjisan {
+      0% { opacity: 0; transform: scale(0.95) rotate(-2deg);}
+      80% { opacity: 1; transform: scale(1.03) rotate(2deg);}
+      100% { opacity: 1; transform: scale(1) rotate(0);}
+      /* おじさん、ちょっと照れちゃうネ😁✨ */
+    }
+    @keyframes boxSlideOjisan {
+      0% {
+        transform: translateY(40px) scale(0.8) rotate(-10deg);
+        opacity: 0.2;
+        /* おじさんのヨイショ！だヨ😅 */
+      }
+      60% {
+        transform: translateY(-10px) scale(1.1) rotate(5deg);
+        opacity: 1;
+        /* おじさん、ちょっと頑張っちゃうネ✨ */
+      }
+      100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+        /* バッチリ決まったヨ！ナンチャッテ😁👍 */
+      }
+    }
+    @keyframes roofDonOjisan {
+      0% {
+        transform: translateY(-80px) scaleX(0.7) skewX(-10deg);
+        opacity: 0.1;
+        /* 屋根がドーン！だヨ😆 */
+      }
+      80% {
+        transform: translateY(10px) scaleX(1.05) skewX(3deg);
+        opacity: 1;
+        /* おじさん、ちょっとズレちゃったカナ？💦 */
+      }
+      100% {
+        transform: translateY(0) scaleX(1) skewX(0deg);
+        opacity: 1;
+        /* バッチリ着地！ナンチャッテ😊✨ */
+      }
+    }
+    /* おじさんのコメント：デザインもナウいでしょ！？😁✨ */
+  </style>
+</head>
+<body>
+  <!-- おじさんのご挨拶 -->
+  <h2>ヤッホー！！😊💕<br>ボックス数、教えてネ✨ナンチャッテ</h2>
+  <div class="controls">
+    <label>B (400mm)だヨ！</label><input type="number" id="B" value="3" min="0" max="3">
+    <label>C (500mm)だヨ！</label><input type="number" id="C" value="3" min="0" max="3">
+    <label>D (800mm)だヨ！</label><input type="number" id="D" value="3" min="0" max="3">
+    <label>E (1000mm)だヨ！</label><input type="number" id="E" value="3" min="0" max="3">
+  </div>
+  <button onclick="findMaxGateHeight()">計算しちゃうヨ！ナンチャッテ😁👍✨</button>
+
+  <div class="gate-container" id="gateVisual"></div>
+
+  <script>
+    // おじさんのコメント：ここからプログラムだヨ！バッチリ！！
+    const boxHeights = { A: 300, B: 400, C: 500, D: 800, E: 1000 };
+    const displayOrder = ['D', 'E', 'A', 'B', 'C'];
+    const privateBoxes = { A: 10, B: 5, C: 2 };
+
+    // 入力をゲットだヨ！間違えないでネ😊✨
+    function getSharedInput() {
+      return {
+        B: parseInt(document.getElementById("B").value) || 0,
+        C: parseInt(document.getElementById("C").value) || 0,
+        D: parseInt(document.getElementById("D").value) || 0,
+        E: parseInt(document.getElementById("E").value) || 0
+      };
+    }
+
+    // ボックス数を合体！ナンチャッテ😁
+    function mergeBoxCounts(sharedInput) {
+      const merged = {};
+      for (const key of Object.keys(boxHeights)) {
+        merged[key] = (privateBoxes[key] || 0) + (sharedInput[key] || 0);
+      }
+      return merged;
+    }
+
+    // 左右の違いをチェックだヨ！グロッキーにならないように😅💦
+    function diffCount(left, right) {
+      let diff = 0;
+      for (const k of Object.keys(boxHeights)) {
+        diff += Math.abs((left[k] || 0) - (right[k] || 0));
+      }
+      return diff;
+    }
+
+    // ゲート作れるか？ドキドキだネ✨
+    function canBuildGate(height, allBoxes) {
+      const keys = Object.keys(allBoxes);
+      const totalCombos = [];
+
+      function generateCombos(index, current, leftHeight, usedBoxes) {
+        if (index === keys.length) {
+          if (leftHeight === height) {
+            totalCombos.push({ combo: { ...current }, used: { ...usedBoxes } });
+          }
+          return;
+        }
+
+        const key = keys[index];
+        const maxCount = allBoxes[key];
+        for (let count = 0; count <= maxCount; count++) {
+          current[key] = count;
+          usedBoxes[key] = count;
+          generateCombos(index + 1, current, leftHeight + count * boxHeights[key], usedBoxes);
+        }
+      }
+
+      generateCombos(0, {}, 0, {});
+
+      let best = null;
+      let minDiff = Infinity;
+
+      for (const { combo: left, used: leftUsed } of totalCombos) {
+        const remaining = {};
+        for (const key of keys) {
+          remaining[key] = allBoxes[key] - (leftUsed[key] || 0);
+        }
+
+        const rightCombos = [];
+        function generateRight(index, current, rightHeight) {
+          if (index === keys.length) {
+            if (rightHeight === height) {
+              rightCombos.push({ ...current });
+            }
+            return;
+          }
+
+          const key = keys[index];
+          const maxCount = remaining[key];
+          for (let count = 0; count <= maxCount; count++) {
+            current[key] = count;
+            generateRight(index + 1, current, rightHeight + count * boxHeights[key]);
+          }
+        }
+
+        generateRight(0, {}, 0);
+
+        for (const right of rightCombos) {
+          const currentDiff = diffCount(left, right);
+          if (currentDiff < minDiff) {
+            minDiff = currentDiff;
+            best = { height, left, right };
+          }
+        }
+      }
+      return best;
+    }
+
+    // ゲートを描くヨ！見ててネ😊✨
+    function renderGate(left, right, height, roofBlock) {
+      const container = document.getElementById("gateVisual");
+      container.innerHTML = "";
+
+      const roof = document.createElement("div");
+      roof.className = "roof";
+      roof.innerHTML = `高さ：${height}mm (天井：${roofBlock})😊✨`;
+
+      const columns = document.createElement("div");
+      columns.className = "gate-columns";
+
+      const leftDiv = document.createElement("div");
+      leftDiv.className = "gate-side";
+      const rightDiv = document.createElement("div");
+      rightDiv.className = "gate-side";
+
+      function createBoxes(combo) {
+        const boxes = [];
+        for (const key of displayOrder) {
+          const count = combo[key] || 0;
+          for (let i = 0; i < count; i++) {
+            const div = document.createElement("div");
+            div.className = `box ${key}`;
+            div.style.height = boxHeights[key] / 10 + "px";
+            div.textContent = key + "だヨ！";
+            boxes.push(div);
+          }
+        }
+        return boxes;
+      }
+
+      createBoxes(left).forEach(div => leftDiv.appendChild(div));
+      createBoxes(right).forEach(div => rightDiv.appendChild(div));
+
+      columns.appendChild(leftDiv);
+      columns.appendChild(rightDiv);
+      container.appendChild(roof);
+      container.appendChild(columns);
+
+      // おじさんの自慢：昔は手書きで図面描いてたんだヨ！ナウい時代になったネ😁👍
+    }
+
+    // 最大ゲート高さを探すヨ！ドキドキだネ✨
+    function findMaxGateHeight() {
+      const sharedInput = getSharedInput();
+      const allBoxes = mergeBoxCounts(sharedInput);
+
+      const boxTypes = Object.keys(boxHeights);
+      for (let h = 7000; h >= 100; h -= 100) {
+        for (const roofBlock of boxTypes) {
+          if (allBoxes[roofBlock] <= 0) continue;
+
+          const availableBoxes = { ...allBoxes };
+          availableBoxes[roofBlock] -= 1;
+
+          const result = canBuildGate(h, availableBoxes);
+          if (result) {
+            renderGate(result.left, result.right, result.height, roofBlock);
+            // おじさんのコメント：バッチリだネ！ナンチャッテ😊✨
+            return;
+          }
+        }
+      }
+
+      const container = document.getElementById("gateVisual");
+      container.innerHTML = `<p>
+        ピッタリのゲート構成、<br>
+        見つからなかったヨ😅💦<br>
+        またチャレンジしようネ✨ナンチャッテ！！<br>
+        おじさん、昔は写メで図面送ってたんだヨ😁👍
+      </p>`;
+    }
+    // おじさんのコメント：プログラムも長いネ！グロッキーになっちゃうヨ😅
+  </script>
+</body>
+</html>
