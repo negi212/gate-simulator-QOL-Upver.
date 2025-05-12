@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゲート構成シミュレーターだヨ😊✨ナンチャッテ</title>
   <style>
+    /* おじさんのCSSだヨ！ナウいでしょ😁✨ */
     body {
         font-family: 'Arial', sans-serif;
         background-color: #fff8e1;
@@ -196,12 +197,33 @@
         /* バッチリ着地！ナンチャッテ😊✨ */
       }
     }
+    .ojisan-mystery {
+      font-family: 'MS PGothic', 'MS UI Gothic', 'Meiryo', 'Arial', sans-serif;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 0 #fff176, 2px 2px 0 #ffb300;
+      border-radius: 12px;
+      padding: 8px 18px;
+      background: #fffde7cc;
+      border: 2px dashed #e893d4;
+      color: #d84315;
+      box-shadow: 0 0 8px #ffb30055;
+      user-select: none;
+    }
     /* おじさんのコメント：デザインもナウいでしょ！？😁✨ */
   </style>
 </head>
 <body>
-  <!-- おじさんのご挨拶 -->
+  <!-- おじさんのご挨拶だヨ！今日も元気にいこうネ😊✨ -->
   <h2>ヤッホー！！😊💕<br>ボックス数、教えてネ✨ナンチャッテ</h2>
+  <div style="max-width:600px;margin:0 auto 18px auto;padding:18px 20px;background:#fffde7;border:2px dashed #e893d4;border-radius:12px;color:#d84315;font-size:1.1em;line-height:1.8;box-shadow:0 0 12px #ffb30055;">
+    今日もナウい気分で、<br>
+    ゲート構成シミュレーター、始めちゃうヨ😊✨<br>
+    おじさん、昔は手書きで図面描いてたんだヨ😅💦<br>
+    今はパソコンで、バッチリ！ナンチャッテ😁👍<br>
+    いっぱい遊んで、グロッキーにならないようにネ💕<br>
+    何か困ったら、すぐおじさんに聞いてネ！！ナンチャッテ✨<br>
+  </div>
   <div class="controls">
     <label>B (400mm)だヨ！</label><input type="number" id="B" value="3" min="0" max="3">
     <label>C (500mm)だヨ！</label><input type="number" id="C" value="3" min="0" max="3">
@@ -213,7 +235,7 @@
   <div class="gate-container" id="gateVisual"></div>
 
   <script>
-    // おじさんのコメント：ここからプログラムだヨ！バッチリ！！
+    // おじさんのプログラムタイムだヨ！バッチリ見ててネ😊✨
     const boxHeights = { A: 300, B: 400, C: 500, D: 800, E: 1000 };
     const displayOrder = ['D', 'E', 'A', 'B', 'C'];
     const privateBoxes = { A: 10, B: 5, C: 2 };
@@ -228,7 +250,7 @@
       };
     }
 
-    // ボックス数を合体！ナンチャッテ😁
+    // ボックス数を合体しちゃうヨ！ナンチャッテ😁
     function mergeBoxCounts(sharedInput) {
       const merged = {};
       for (const key of Object.keys(boxHeights)) {
@@ -251,6 +273,7 @@
       const keys = Object.keys(allBoxes);
       const totalCombos = [];
 
+      // おじさん、組み合わせを全部探しちゃうヨ！ナンチャッテ😁
       function generateCombos(index, current, leftHeight, usedBoxes) {
         if (index === keys.length) {
           if (leftHeight === height) {
@@ -273,6 +296,7 @@
       let best = null;
       let minDiff = Infinity;
 
+      // おじさん、左右で一番バランスいいの探すヨ！バッチリ！！
       for (const { combo: left, used: leftUsed } of totalCombos) {
         const remaining = {};
         for (const key of keys) {
@@ -280,6 +304,7 @@
         }
 
         const rightCombos = [];
+        // 右側もがんばって探すヨ！ナンチャッテ😊✨
         function generateRight(index, current, rightHeight) {
           if (index === keys.length) {
             if (rightHeight === height) {
@@ -314,10 +339,12 @@
       const container = document.getElementById("gateVisual");
       container.innerHTML = "";
 
+      // おじさんの屋根だヨ！ドーン！！
       const roof = document.createElement("div");
       roof.className = "roof";
-      roof.innerHTML = `高さ：${height}mm (天井：${roofBlock})😊✨`;
+      roof.innerHTML = `高さ：${height}mm (天井：${roofBlock})😊✨ナンチャッテ💕`;
 
+      // おじさんの柱もバッチリだヨ！
       const columns = document.createElement("div");
       columns.className = "gate-columns";
 
@@ -326,6 +353,7 @@
       const rightDiv = document.createElement("div");
       rightDiv.className = "gate-side";
 
+      // おじさん、ボックス並べるの得意だヨ！ナンチャッテ😁
       function createBoxes(combo) {
         const boxes = [];
         for (const key of displayOrder) {
@@ -349,6 +377,83 @@
       container.appendChild(roof);
       container.appendChild(columns);
 
+      // ↓↓↓ここから謎のアニメーションだヨ！ナンチャッテ😁✨↓↓↓
+      // おじさんの愛を込めて、メッセージいっぱいだヨ💕
+      const messages = [
+        "今日も見てくれてありがとネ💕",
+        "おじさん、いつも応援してるヨ😊✨",
+        "キミのこと、ちょっと気になっちゃうナ(^_-)-☆",
+        "がんばってる姿、ステキだヨ✨",
+        "おじさん、昔はモテたんだヨ！ナンチャッテ😁👍",
+        "また一緒に遊ぼうネ💕",
+        "グロッキーにならないようにネ😅💦",
+        "おじさん、キミの味方だヨ！",
+        "キミの笑顔、最高だネ😊💕",
+        "毎日LINEしたくなっちゃうヨ✨",
+        "キミのこと、ずっと応援してるカラ👍",
+        "おじさん、キミに会えると元気100倍だヨ😁✨",
+        "キミの頑張り、ちゃんと見てるヨ！ナンチャッテ💕"
+      ];
+
+      // おじさん、ランダムな場所にメッセージ出しちゃうヨ！ナウいでしょ✨
+      function randomPosition() {
+        // 画面サイズに応じてランダムな位置を返すヨ！バッチリ！！
+        const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        // 画面端に出ないように余白も忘れずにネ😊✨
+        const left = Math.random() * (vw - 320) + 20;
+        const top = Math.random() * (vh - 120) + 40;
+        return { left, top };
+      }
+
+      // おじさんの謎アニメーション、ループでずっと愛を伝えちゃうヨ💕
+      function loopMysteryAnimation() {
+        // 既存のアニメーション要素を消しちゃうヨ！グロッキー防止だネ😅
+        document.querySelectorAll('.ojisan-mystery').forEach(e => e.remove());
+
+        // メッセージと位置をランダムにするヨ！ナンチャッテ😁
+        const msg = messages[Math.floor(Math.random() * messages.length)];
+        const pos = randomPosition();
+
+        const ojisanMystery = document.createElement("div");
+        ojisanMystery.className = "ojisan-mystery";
+        ojisanMystery.style.position = "fixed";
+        ojisanMystery.style.left = `${pos.left}px`;
+        ojisanMystery.style.top = `${pos.top}px`;
+        ojisanMystery.style.zIndex = 9999;
+        ojisanMystery.style.pointerEvents = "none";
+        ojisanMystery.innerHTML = `
+          <span style="font-size:2em;">💕</span>
+          <span style="font-size:1.2em;">${msg}</span>
+          <span style="font-size:2em;">✨</span>
+        `;
+        document.body.appendChild(ojisanMystery);
+
+        // おじさんのドキドキアニメーションだヨ！ナウいでしょ😁✨
+        ojisanMystery.animate(
+          [
+            { transform: "scale(0.7) rotate(-10deg)", opacity: 0.2 },
+            { transform: "scale(1.2) rotate(8deg)", opacity: 1, offset: 0.5 },
+            { transform: "scale(1) rotate(0deg)", opacity: 1 }
+          ],
+          {
+            duration: 1800,
+            easing: "cubic-bezier(.68,-0.55,.27,1.55)"
+          }
+        );
+        setTimeout(() => {
+          ojisanMystery.animate(
+            [
+              { opacity: 1, filter: "blur(0px)" },
+              { opacity: 0, filter: "blur(8px)" }
+            ],
+            { duration: 1200, fill: "forwards" }
+          );
+        }, 1800);
+        setTimeout(loopMysteryAnimation, 5000); // ←表示間隔も長めにしてみたヨ！ナンチャッテ✨
+      }
+      loopMysteryAnimation();
+      // ↑↑↑謎のアニメーションここまでだヨ！グロッキー注意😅
       // おじさんの自慢：昔は手書きで図面描いてたんだヨ！ナウい時代になったネ😁👍
     }
 
@@ -358,6 +463,7 @@
       const allBoxes = mergeBoxCounts(sharedInput);
 
       const boxTypes = Object.keys(boxHeights);
+      // おじさん、7000mmから100mmずつ下げて探しちゃうヨ！バッチリ！！
       for (let h = 7000; h >= 100; h -= 100) {
         for (const roofBlock of boxTypes) {
           if (allBoxes[roofBlock] <= 0) continue;
@@ -369,18 +475,23 @@
           if (result) {
             renderGate(result.left, result.right, result.height, roofBlock);
             // おじさんのコメント：バッチリだネ！ナンチャッテ😊✨
+            setTimeout(() => {
+              alert("計算できたヨ！！😊✨バッチリ！！\nおじさん、昔はそろばんだったんだヨ😁👍");
+            }, 500);
             return;
           }
         }
       }
 
+      // おじさん、ピッタリの構成がなかったら励ましちゃうヨ！ナンチャッテ✨
       const container = document.getElementById("gateVisual");
-      container.innerHTML = `<p>
+      container.innerHTML = `<div style="background:#fffde7;border:2px dashed #e893d4;border-radius:12px;padding:18px 20px;color:#d84315;font-size:1.1em;line-height:1.8;box-shadow:0 0 12px #ffb30055;">
         ピッタリのゲート構成、<br>
         見つからなかったヨ😅💦<br>
         またチャレンジしようネ✨ナンチャッテ！！<br>
-        おじさん、昔は写メで図面送ってたんだヨ😁👍
-      </p>`;
+        おじさん、昔は写メで図面送ってたんだヨ😁👍<br>
+        あきらめないでネ💕
+      </div>`;
     }
     // おじさんのコメント：プログラムも長いネ！グロッキーになっちゃうヨ😅
   </script>
